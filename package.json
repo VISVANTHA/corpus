@@ -1,0 +1,28 @@
+{
+  "name": "ridge-atlas",
+  "version": "1.0.0",
+  "description": "RidgeAtlas \u2014 Library annex holds.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": "21.x"
+  },
+  "scripts": {
+    "build": "vite build --config vite.config.cjs",
+    "test": "mocha --recursive tests",
+    "lint": "eslint src tests eslint-rules --ignore-pattern dist || eslint . --ignore-pattern dist --ignore-pattern node_modules",
+    "dup": "jscpd src packages",
+    "mutate": "stryker run"
+  },
+  "devDependencies": {
+    "mocha": "10.2.0",
+    "jscpd": "3.5.10",
+    "eslint": "8.57.1",
+    "eslint-plugin-security": "1.7.1",
+    "@stryker-mutator/core": "8.7.1",
+    "@stryker-mutator/mocha-runner": "8.7.1",
+    "vite": "5.4.11"
+  }
+}
