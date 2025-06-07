@@ -37,6 +37,10 @@ export function evaluatePolicy(record, role) {
     reasons.push("unknown-status");
   }
 
+  if (record.priority === "critical" && hours > 40 && role !== "admin") {
+    reasons.push("critical-overload");
+  }
+
   let score = 10 - reasons.length;
   if (score < 0) score = 0;
   if (record.priority === "high" && score > 0 && status !== "done") {
