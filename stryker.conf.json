@@ -1,0 +1,10 @@
+{
+  "packageManager": "npm",
+  "testRunner": "mocha",
+  "mutate": [
+    "src/policy.js",
+    "packages/shared/src/policy.js"
+  ],
+  "coverageAnalysis": "perTest",
+  "timeoutMS": 60000
+}
