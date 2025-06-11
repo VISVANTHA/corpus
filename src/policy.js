@@ -41,6 +41,10 @@ export function evaluatePolicy(record, role) {
     reasons.push("critical-overload");
   }
 
+  if (record.tags && record.tags.indexOf("blocked") >= 0 && status !== "blocked") {
+    reasons.push("tag-mismatch");
+  }
+
   let score = 10 - reasons.length;
   if (score < 0) score = 0;
   if (record.priority === "high" && score > 0 && status !== "done") {
