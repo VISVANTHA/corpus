@@ -1,0 +1,151 @@
+{
+  "id": "CE-N21-009",
+  "folder": "javascript-repo-n21-009",
+  "productName": "RidgeAtlas",
+  "packageName": "ridge-atlas",
+  "domain": "Library annex holds",
+  "language": "JavaScript",
+  "node": 21,
+  "bundler": "Vite (built as esbuild)",
+  "packageManager": "npm",
+  "architecture": "monolith",
+  "toolFamilies": [
+    "eslint-host",
+    "eslint-plugin-security",
+    "jscpd",
+    "stryker-mocha"
+  ],
+  "uniqueMetrics": 18,
+  "metrics": [
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Defect Propagation Risk Detection",
+      "metric": "Multi-Point Failure Probability",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Refactoring Identification",
+      "metric": "Redundancy Localization",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Code Quality Assessment",
+      "metric": "Structural Cleanliness Score",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Test Maintenance Reduction",
+      "metric": "Test Suite Streamlining",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Refactoring Opportunity Detection",
+      "metric": "Abstraction Potential",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Risk-Based Testing Prioritization",
+      "metric": "Regression Focus Mapping",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Code Quality Auditing",
+      "technique": "Code Duplication",
+      "classification": "Maintainability Testing",
+      "metric": "Synchronization Verification",
+      "tool": "jscpd"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Secure Coding Validation",
+      "metric": "Best Practice Compliance",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Input Validation Testing",
+      "metric": "Entry Point Sanitization",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Data Flow Security Analysis",
+      "metric": "Sensitive Information Tracking",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Authentication & Authorization Weakness Detection",
+      "metric": "Access Control Verification",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Dependency & Library Vulnerability Detection",
+      "metric": "Supply Chain Security",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Compliance & Security Standard Validation",
+      "metric": "Regulatory Alignment",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Security White-box Testing",
+      "technique": "Static Vulnerabilities (SAST)",
+      "classification": "Security Vulnerability Detection",
+      "metric": "Exploit Surface Identification",
+      "tool": "eslint-plugin-security"
+    },
+    {
+      "testingType": "Mutation Testing",
+      "technique": "Mutation Score",
+      "classification": "Fault Detection Capability",
+      "metric": "Logic Error Sensitivity",
+      "tool": "StrykerJS + Mocha"
+    },
+    {
+      "testingType": "Mutation Testing",
+      "technique": "Mutation Score",
+      "classification": "Test Coverage Quality Validation",
+      "metric": "Test Rigor Assessment",
+      "tool": "StrykerJS + Mocha"
+    },
+    {
+      "testingType": "Mutation Testing",
+      "technique": "Mutation Score",
+      "classification": "Test Case Improvement Identification",
+      "metric": "Weak Spot Localization",
+      "tool": "StrykerJS + Mocha"
+    },
+    {
+      "testingType": "Mutation Testing",
+      "technique": "Mutation Score",
+      "classification": "Edge Case Detection",
+      "metric": "Boundary Mutant Analysis",
+      "tool": "StrykerJS + Mocha"
+    }
+  ],
+  "compat": {
+    "notes": []
+  },
+  "status": "generated"
+}
