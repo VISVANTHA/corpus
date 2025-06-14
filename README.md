@@ -15,3 +15,5 @@ It is a realistic original product used as White Box ground truth. Metric covera
 ## License
 
 MIT
+
+Generated as `javascript-repo-n21-009`.
