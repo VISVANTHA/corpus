@@ -1,13 +1,22 @@
-import assert from "assert";
-import { authorize } from "../src/auth.js";
+'use strict';
 
-describe("auth", function () {
-  it("blocks viewer writes", function () {
-    const result = authorize({ role: "viewer" }, "write");
-    assert.strictEqual(result.ok, false);
+const assert = require('assert');
+const { authorize } = require('../src/auth');
+
+describe('auth', function () {
+  it('blocks viewers from writing', function () {
+    const decision = authorize({ role: 'viewer' }, 'write');
+    assert.strictEqual(decision.allowed, false);
   });
-  it("allows member writes", function () {
-    const result = authorize({ role: "member" }, "write");
-    assert.strictEqual(result.ok, true);
+
+  it('allows editors to write', function () {
+    const decision = authorize({ role: 'editor' }, 'write');
+    assert.strictEqual(decision.allowed, true);
+  });
+
+  it('rejects an unknown actor', function () {
+    const decision = authorize(null, 'write');
+    assert.strictEqual(decision.allowed, false);
+    assert.strictEqual(decision.reason, 'unknown-actor');
   });
 });

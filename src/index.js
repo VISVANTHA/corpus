@@ -1,10 +1,16 @@
-import { DATASET_CLOCK } from "./clock.js";
-import { MemoryStore } from "./store.js";
-import { createService } from "./service.js";
+'use strict';
+
+const { createService } = require('./service');
+const { MemoryStore } = require('./store');
+
 function createApp() {
-  const store = new MemoryStore(DATASET_CLOCK);
+  const store = new MemoryStore();
   const service = createService(store);
-  return { product: "RidgeAtlas", store, service, clock: DATASET_CLOCK };
+  return {
+    product: 'GraniteMill',
+    domain: 'Community garden plots',
+    service,
+  };
 }
 
-export { createApp };
+module.exports = { createApp };

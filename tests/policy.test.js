@@ -1,17 +1,30 @@
-import assert from "assert";
-import { evaluatePolicy, canTransition } from "../src/policy.js";
+'use strict';
 
-describe("policy", function () {
-  it("accepts ready work", function () {
-    const result = evaluatePolicy({ id: "RI21-009-1", status: "ready", hours: 2, remaining: 1 }, "member");
-    assert.strictEqual(result.ok, true);
+const assert = require('assert');
+const { evaluatePolicy, canTransition } = require('../src/policy');
+const { toProductId } = require('../src/ids');
+
+describe('policy', function () {
+  const id = toProductId(1);
+
+  it('lets owners do anything', function () {
+    const decision = evaluatePolicy({ id, status: 'draft' }, 'owner');
+    assert.strictEqual(decision.allowed, true);
   });
-  it("rejects unknown status", function () {
-    const result = evaluatePolicy({ id: "RI21-009-2", status: "nope", hours: 1 }, "member");
-    assert.strictEqual(result.ok, false);
+
+  it('blocks editors on archived records', function () {
+    const decision = evaluatePolicy({ id, status: 'archived' }, 'editor');
+    assert.strictEqual(decision.allowed, false);
   });
-  it("knows transitions", function () {
-    assert.strictEqual(canTransition("ready", "in_progress"), true);
-    assert.strictEqual(canTransition("done", "ready"), false);
+
+  it('only lets viewers read published records', function () {
+    const decision = evaluatePolicy({ id, status: 'draft' }, 'viewer');
+    assert.strictEqual(decision.allowed, false);
+  });
+
+  it('validates status transitions', function () {
+    assert.strictEqual(canTransition('draft', 'published'), true);
+    assert.strictEqual(canTransition('published', 'draft'), false);
+    assert.strictEqual(canTransition('archived', 'published'), false);
   });
 });

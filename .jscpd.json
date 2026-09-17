@@ -2,10 +2,18 @@
   "threshold": 0,
   "reporters": [
     "json",
-    "console"
+    "consoleFull"
   ],
   "ignore": [
     "**/node_modules/**",
-    "**/dist/**"
-  ]
+    "**/dist/**",
+    "**/coverage/**",
+    "**/report/**",
+    "**/package-lock.json",
+    "**/yarn.lock",
+    "**/pnpm-lock.yaml",
+    "**/bun.lockb",
+    "**/bun.lock"
+  ],
+  "absolute": true
 }

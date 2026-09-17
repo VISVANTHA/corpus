@@ -1,8 +1,12 @@
-export function sanitizeText(input) {
-  const text = String(input || "");
-  return text.replace(/[<>]/g, "").trim().slice(0, 240);
+'use strict';
+
+function sanitizeText(input) {
+  if (typeof input !== 'string') return '';
+  return input.replace(/[<>]/g, '').trim().slice(0, 240);
 }
 
-export function allowRole(role) {
-  return role === "admin" || role === "member" || role === "viewer";
+function allowRole(role) {
+  return role === 'owner' || role === 'editor' || role === 'viewer';
 }
+
+module.exports = { sanitizeText, allowRole };

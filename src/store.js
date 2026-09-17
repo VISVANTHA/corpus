@@ -1,17 +1,19 @@
-export class MemoryStore {
-  constructor(clock) {
-    this.clock = clock;
-    this.rows = new Map();
+'use strict';
+
+class MemoryStore {
+  constructor() {
+    this._data = new Map();
   }
-  put(record) {
-    const copy = Object.assign({}, record, { updatedAt: this.clock.now().toISOString() });
-    this.rows.set(copy.id, copy);
-    return copy;
+  put(id, value) {
+    this._data.set(id, value);
+    return value;
   }
   get(id) {
-    return this.rows.get(id) || null;
+    return this._data.get(id);
   }
   list() {
-    return Array.from(this.rows.values());
+    return Array.from(this._data.values());
   }
 }
+
+module.exports = { MemoryStore };

@@ -1,11 +1,16 @@
-export function ok(value) {
+'use strict';
+
+function ok(value) {
   return { ok: true, value };
 }
 
-export function err(error) {
-  return { ok: false, error };
+function err(message) {
+  return { ok: false, error: message };
 }
 
-export function mapResult(result, map) {
-  return result.ok ? ok(map(result.value)) : result;
+function mapResult(result, fn) {
+  if (!result.ok) return result;
+  return ok(fn(result.value));
 }
+
+module.exports = { ok, err, mapResult };

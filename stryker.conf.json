@@ -1,10 +1,21 @@
 {
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
   "packageManager": "npm",
   "testRunner": "mocha",
-  "mutate": [
-    "src/policy.js",
-    "packages/shared/src/policy.js"
+  "reporters": [
+    "clear-text",
+    "json"
   ],
   "coverageAnalysis": "perTest",
-  "timeoutMS": 60000
+  "mutate": [
+    "src/**/*.js"
+  ],
+  "mochaOptions": {
+    "spec": [
+      "tests/**/*.test.js"
+    ]
+  },
+  "plugins": [
+    "@stryker-mutator/mocha-runner"
+  ]
 }
