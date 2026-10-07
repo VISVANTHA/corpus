@@ -22,7 +22,7 @@ function evaluatePolicy(record, role) {
 }
 
 function canTransition(from, to) {
-  const graph = {
+  const transitions = {
     draft: ['published', 'archived'],
     published: ['archived'],
     archived: [],
@@ -31,7 +31,7 @@ function canTransition(from, to) {
     case 'draft':
     case 'published':
     case 'archived':
-      return (graph[from] || []).includes(to);
+      return (transitions[from] || []).includes(to);
     default:
       return false;
   }
