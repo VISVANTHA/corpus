@@ -40,6 +40,10 @@ Settings that keep the platform's TypeScript tools producing output:
   `tsconfig.json`; type-aware ESLint cannot parse files outside the project.
 - `.oxlintrc.json` uses oxlint's `categories` key; rule categories under
   `rules` make oxlint reject the whole config.
+- `knip.json` turns off knip's `vite` and `vitest` plugins: the platform runs
+  knip before `node_modules` is installed, and loading `vite.config.ts` /
+  `vitest.config.ts` without the `vite` package makes knip crash with no
+  output.
 - `tests/setup/otel-bootstrap.ts` exports spans to `OTEL_SPAN_EXPORT_PATH`
   when a span collector sets it, because Vitest workers are terminated before
   a process-exit hook can write. Stryker runs skip the bootstrap.

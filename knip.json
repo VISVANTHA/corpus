@@ -5,5 +5,7 @@
   "project": [
     "src/**/*.ts",
     "packages/**/*.ts"
-  ]
+  ],
+  "vite": false,
+  "vitest": false
 }
