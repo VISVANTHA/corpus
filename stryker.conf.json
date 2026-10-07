@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "packageManager": "npm",
+  "testRunner": "mocha",
+  "reporters": [
+    "clear-text",
+    "json"
+  ],
+  "coverageAnalysis": "perTest",
+  "mochaOptions": {
+    "spec": ["tests/**/*.test.js"]
+  },
+  "plugins": ["@stryker-mutator/mocha-runner"],
+  "jsonReporter": {
+    "fileName": "reports/mutation.json"
+  },
+  "mutate": [
+    "src/**/*.js"
+  ]
+}
