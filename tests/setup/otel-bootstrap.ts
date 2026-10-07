@@ -1,10 +1,8 @@
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const { trace } = require('@opentelemetry/api');
-const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
-const { SimpleSpanProcessor, InMemorySpanExporter } = require('@opentelemetry/sdk-trace-base');
+import fs from 'node:fs';
+import path from 'node:path';
+import { trace } from '@opentelemetry/api';
+import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
+import { SimpleSpanProcessor, InMemorySpanExporter } from '@opentelemetry/sdk-trace-base';
 
 const exporter = new InMemorySpanExporter();
 const provider = new NodeTracerProvider({
@@ -15,7 +13,7 @@ trace.setGlobalTracerProvider(provider);
 const reportsDir = path.join(__dirname, '../../reports');
 const outFile = path.join(reportsDir, 'opentelemetry-spans.json');
 
-function flushSpans() {
+function flushSpans(): void {
   const spans = exporter.getFinishedSpans().map((span) => ({
     name: span.name,
     traceId: span.spanContext().traceId,
@@ -47,5 +45,9 @@ function flushSpans() {
 process.on('beforeExit', flushSpans);
 process.on('exit', flushSpans);
 
-global.__otelExporter = exporter;
-global.__otelFlushSpans = flushSpans;
+const g = globalThis as typeof globalThis & {
+  __otelExporter?: InMemorySpanExporter;
+  __otelFlushSpans?: () => void;
+};
+g.__otelExporter = exporter;
+g.__otelFlushSpans = flushSpans;

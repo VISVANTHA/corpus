@@ -7,7 +7,7 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['tests/**/*.test.ts'],
-    setupFiles: ['tools/opentelemetry/otel-bootstrap.js', 'tests/setup/vitest-teardown.ts'],
+    setupFiles: ['tests/setup/otel-bootstrap.ts', 'tests/setup/vitest-teardown.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'cobertura'],

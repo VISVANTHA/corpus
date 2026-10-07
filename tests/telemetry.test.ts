@@ -11,7 +11,7 @@ import { MemoryStore } from '../src/store';
 import type { ProductRecord } from '../src/types';
 
 declare global {
-  // Populated by tools/opentelemetry/otel-bootstrap.js during Vitest runs.
+  // Populated by tests/setup/otel-bootstrap.ts during Vitest runs.
   // eslint-disable-next-line no-var
   var __otelExporter: ExporterType | undefined;
 }

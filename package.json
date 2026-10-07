@@ -22,9 +22,9 @@
     "test:vitest": "vitest run",
     "test:vitest:coverage": "vitest run --coverage",
     "analyze:ts-defs-uses": "tsx scripts/ts-all-defs-uses.ts",
-    "analyze:deps": "depcruise src --output-type json --config .dependency-cruiser.cjs > reports/depcruise-ts.json",
+    "analyze:deps": "depcruise src --output-type json --config .dependency-cruiser.json > reports/depcruise-ts.json",
     "analyze:ncu": "ncu --jsonUpgraded > reports/ncu-report.json",
-    "analyze:knip": "node scripts/knip-report.mjs",
+    "analyze:knip": "tsx scripts/knip-report.ts",
     "typecheck": "tsc -p ."
   },
   "dependencies": {

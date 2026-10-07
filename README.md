@@ -20,15 +20,24 @@ branches) is byte-identical across all 576 branches of this corpus; only the
 build tool, package manager, architecture layout, and each tool's real
 status on this Node family vary.
 
+## TypeScript-only source
+
+This branch contains TypeScript source only, so a white-box platform scan
+detects a single language and plans only its TypeScript tools. The former
+per-tool `tools/<dir>/` folders (shell and Python wrapper scripts plus their
+`trigger.yaml` files) were removed; the OpenTelemetry Vitest bootstrap now
+lives at `tests/setup/otel-bootstrap.ts` and the knip report script at
+`scripts/knip-report.ts`. The tool tables below are kept as the reference
+answer key for each tool's expected status.
+
 ## Supported tools
 
-21 tools are wired on this corpus (one `tools/<dir>/` folder
-each, covering the 103-metric white-box framework). **16 of them
-run on Node 20; 5 do not.**
+21 tools are wired on this corpus, covering the 103-metric white-box
+framework. **16 of them run on Node 20; 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
-exists to expose. Every `tools/<dir>/trigger.yaml` records whether its status
+exists to expose. `dataset.json` records whether each tool's status
 here was actually invoked and observed by Claude Code (`measured: true`) or
 is a real npm-registry `engines.node` claim not yet individually
 invoke-verified on this exact family (`measured: false`) -- declared support
@@ -83,24 +92,21 @@ node src/index.js
 ```
 npm test              # mocha tests/**/*.test.js
 npm run coverage      # nyc + mocha
-npx tsx tools/full_check.ts   # cross-file consistency audit
+npm run test:vitest:coverage   # vitest + v8 coverage
 ```
 
 ## Tool entry points
 
-Every tool directory carries a `trigger.yaml` recording its pin, its
-declared status and what a working run should find. Run one tool directly,
-or all of them:
+Each tool runs through an npm script in `package.json`, for example:
 
 ```
-bash tools/eslint/run_eslint.sh
-npx tsx tools/tool_integration.ts --run
-npx tsx tools/tool_integration.ts --verify
+npm run lint            # eslint
+npm run lint:oxlint     # oxlint
+npm run duplication     # jscpd
+npm run mutation        # stryker
+npm run analyze:deps    # dependency-cruiser
+npm run analyze:knip    # knip
 ```
-
-`--run` distinguishes three outcomes: a tool that ran, a tool that skipped
-for a reason `dataset.json` already records, and a tool that skipped for a
-reason it does not. Only the third is a finding.
 
 ## Planted fixtures
 
@@ -115,7 +121,7 @@ javascript-combos/  (JS_V20_VITE_NPM_MONO)
 |-- .github/
 |-- src/
 |-- tests/  (or packages/shared/tests/ for Microservices)
-|-- tools/  (21 tool directories + _skip.sh, tool_integration.ts, full_check.ts)
+|-- scripts/
 |-- README.md
 |-- dataset.json
 |-- package.json
