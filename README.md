@@ -1,13 +1,14 @@
-# JS_V20_VITE_NPM_MONO
+# TS_V20_VITE_NPM_MONO
 
-Part of the `javascript-combos` white-box test-repo corpus (GraniteMill /
+Part of the [`VISVANTHA/corpus`](https://github.com/VISVANTHA/corpus) white-box test-repo corpus (GraniteMill /
 `granite-mill`, domain: Community garden plots).
 
 ## Branch variables
 
 | Variable | This branch |
 | --- | --- |
-| Branch | `JS_V20_VITE_NPM_MONO` |
+| Branch | `TS_V20_VITE_NPM_MONO` |
+| Language | TypeScript |
 | Node.js | 20.20.2 (family V20) |
 | Bundler | Vite (built as esbuild) |
 | Package manager | npm |
@@ -60,7 +61,7 @@ is a claim, invoking is the fact, and this corpus never blurs the two.
 
 | Tool | Role | Pin | Why |
 | --- | --- | --- | --- |
-| `Lizard` | primary | lizard (pip) | measured directly: pip-installed and run for real against this domain's src/ (lizard 1.24.0). Found policy.js's evaluatePolicy as the highest-CCN function at 18 -- corrects an earlier assumption that dataflow.js's tally loop (CCN 17) was highest; Node-independent by construction, so this holds on every family. _(measured: real invocation confirmed by Claude Code)_ |
+| `Lizard` | primary | lizard (pip) | measured directly: pip-installed and run for real against this domain's src/ (lizard 1.24.0). Found policy.ts's evaluatePolicy as the highest-CCN function at 18 -- corrects an earlier assumption that dataflow.ts's tally loop (CCN 17) was highest; Node-independent by construction, so this holds on every family. _(measured: real invocation confirmed by Claude Code)_ |
 | `cyclomatic-complexity` | alternative | cyclomatic-complexity==1.2.5 | cyclomatic-complexity 1.2.5 declares Node 20 compatibility (npm registry engines.node range). _(declared active from npm registry data; not yet individually invoke-verified on this family)_ |
 | `eslint-plugin-sonarjs` | primary | eslint-plugin-sonarjs==4.2.1 | eslint-plugin-sonarjs 4.2.1 declares Node 20 compatibility; runs through eslint itself. _(declared active from npm registry data; not yet individually invoke-verified on this family)_ |
 | `cognitive-complexity-ts` | alternative | cognitive-complexity-ts==0.8.2 | cognitive-complexity-ts 0.8.2 declares Node 20 compatibility (npm registry engines.node range). _(declared active from npm registry data; not yet individually invoke-verified on this family)_ |
@@ -97,13 +98,13 @@ npm run build
 ## Run
 
 ```
-node src/index.js
+npx tsx src/index.ts
 ```
 
 ## Test
 
 ```
-npm test              # mocha tests/**/*.test.js
+npm test              # mocha tests/**/*.test.ts
 npm run coverage      # nyc + mocha
 npm run test:vitest:coverage   # vitest + v8 coverage
 ```
@@ -125,12 +126,12 @@ npm run analyze:knip    # knip
 
 | Fixture | File(s) | Planted for |
 | --- | --- | --- |
-| Duplication | [`src/http-errors.js`](src/http-errors.js) + [`src/http-errors-legacy.js`](src/http-errors-legacy.js) | jscpd, Dolos |
+| Duplication | [`src/http-errors.ts`](src/http-errors.ts) + [`src/http-errors-legacy.ts`](src/http-errors-legacy.ts) | jscpd, Dolos |
 
 ## Workspace layout
 
 ```
-javascript-combos/  (JS_V20_VITE_NPM_MONO)
+corpus/  (TS_V20_VITE_NPM_MONO)
 |-- .github/
 |-- src/
 |-- tests/  (or packages/shared/tests/ for Microservices)

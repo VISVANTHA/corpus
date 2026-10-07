@@ -1,10 +1,10 @@
 {
-  "branchId": "JS_V20_VITE_NPM_MONO",
-  "repository": "javascript-combos",
+  "branchId": "TS_V20_VITE_NPM_MONO",
+  "repository": "VISVANTHA/corpus",
   "productName": "GraniteMill",
   "packageName": "granite-mill",
   "domain": "Community garden plots",
-  "language": "JavaScript",
+  "language": "TypeScript",
   "node": "20.20.2",
   "nodeFamily": 20,
   "bundler": "Vite (built as esbuild)",
@@ -29,7 +29,7 @@
       "pin": "lizard (pip)",
       "status": "active",
       "measured": true,
-      "note": "measured directly: pip-installed and run for real against this domain's src/ (lizard 1.24.0). Found policy.js's evaluatePolicy as the highest-CCN function at 18 -- corrects an earlier assumption that dataflow.js's tally loop (CCN 17) was highest; Node-independent by construction, so this holds on every family."
+      "note": "measured directly: pip-installed and run for real against this domain's src/ (lizard 1.24.0). Found policy.ts's evaluatePolicy as the highest-CCN function at 18 -- corrects an earlier assumption that dataflow.ts's tally loop (CCN 17) was highest; Node-independent by construction, so this holds on every family."
     },
     {
       "tool": "cyclomatic-complexity",
@@ -286,8 +286,8 @@
   ],
   "plantedFixtures": {
     "duplication": [
-      "src/http-errors.js",
-      "src/http-errors-legacy.js"
+      "src/http-errors.ts",
+      "src/http-errors-legacy.ts"
     ]
   },
   "metrics": [
