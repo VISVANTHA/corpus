@@ -7,6 +7,13 @@
     "json"
   ],
   "coverageAnalysis": "perTest",
+  "mochaOptions": {
+    "spec": ["tests/**/*.test.js"]
+  },
+  "plugins": ["@stryker-mutator/mocha-runner"],
+  "jsonReporter": {
+    "fileName": "reports/mutation.json"
+  },
   "mutate": [
     "src/**/*.js"
   ]

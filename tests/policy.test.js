@@ -1,4 +1,5 @@
 'use strict';
+/* global describe, it */
 
 const assert = require('assert');
 const { evaluatePolicy, canTransition } = require('../src/policy');
