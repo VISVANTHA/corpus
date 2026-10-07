@@ -30,6 +30,19 @@ lives at `tests/setup/otel-bootstrap.ts` and the knip report script at
 `scripts/knip-report.ts`. The tool tables below are kept as the reference
 answer key for each tool's expected status.
 
+Settings that keep the platform's TypeScript tools producing output:
+
+- `tsc -p .` must stay clean: the Stryker TypeScript checker type-checks the
+  whole project before mutating and falls back to a slower unchecked run on
+  any error.
+- `.eslintignore` excludes the build config files that sit outside
+  `tsconfig.json`; type-aware ESLint cannot parse files outside the project.
+- `.oxlintrc.json` uses oxlint's `categories` key; rule categories under
+  `rules` make oxlint reject the whole config.
+- `tests/setup/otel-bootstrap.ts` exports spans to `OTEL_SPAN_EXPORT_PATH`
+  when a span collector sets it, because Vitest workers are terminated before
+  a process-exit hook can write. Stryker runs skip the bootstrap.
+
 ## Supported tools
 
 21 tools are wired on this corpus, covering the 103-metric white-box

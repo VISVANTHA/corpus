@@ -1,0 +1,5 @@
+# Build/tool config files sit outside tsconfig.json, so type-aware
+# ESLint (parserOptions.project) cannot parse them.
+eslint.config.ts
+vite.config.ts
+vitest.config.ts
