@@ -156,7 +156,7 @@ function build(opts) {
     total += measured.length;
     missing += violations.length;
     stats[file] = {
-      percent_covered: (covered.length / measured.length) * 100,
+      percent_covered: 100 - (violations.length / measured.length) * 100,
       violation_lines: violations,
       covered_lines: covered,
       violations: violations.map((n) => [n, null]),
